@@ -3,6 +3,7 @@ Common settings and globals.
 """
 
 from os.path import abspath, basename, dirname, join, normpath
+import os
 
 ########## PATH CONFIGURATION
 
@@ -30,12 +31,12 @@ TEMPLATE_DEBUG = DEBUG
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends',
-        'NAME': '',
-        'HOST': '',
-        'USER': '',
-        'PASSWORD': '',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.',
+        'NAME': os.environ.get('DATABASE_NAME', ''),
+        'HOST': os.environ.get('DATABASE_HOST', ''),
+        'USER': os.environ.get('DATABASE_USER', ''),
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD', ''),
+        'PORT': os.environ.get('DATABASE_PORT', ''),
     }
 }
 ########## END DATABASE CONFIGURATION
@@ -82,7 +83,7 @@ STATICFILES_FINDERS = (
 
 ########## SECRET CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
-
+SECRET_KEY = os.environ.get('SECRET_KEY', '')
 ########## END SECRET CONFIGURATION
 
 ########## TEMPLATE CONFIGURATION
