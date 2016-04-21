@@ -1,0 +1,32 @@
+/*
+ * All Globals
+ *
+ **/
+ html {
+     background-color: #ddd;
+ }
+
+ /*
+  * Navbar
+  **/
+.mainLogo {
+    height: 59px;
+    width: auto;
+}
+nav ul a {
+    color: #9E9E9E;
+}
+nav ul a:hover {
+    color: #3B89B6;
+}
+nav ul li:hover {
+    background-color: #fff;
+}
+i.fa.fa-bars {
+    color: #9E9E9E;
+    margin-left: 10px;
+}
+nav {
+    /*background-color: #3B89B6;*/
+    background-color: #fff;
+}
