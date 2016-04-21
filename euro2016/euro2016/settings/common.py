@@ -48,7 +48,7 @@ TIME_ZONE = 'Asia/Kolkata'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#language-code
 LANGUAGE_CODE = 'en-us'
-
+USE_HTTPS = False
 ########## END GENERAL CONFIGURATION
 
 ########## MEDIA CONFIGURATION
@@ -152,6 +152,8 @@ DJANGO_APPS = (
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
+    'account',
+    'material',
 )
 
 ########## LOGGING CONFIGURATION
@@ -173,3 +175,8 @@ INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
 WSGI_APPLICATION = '%s.wsgi.application' % SITE_NAME
 ########## END WSGI CONFIGURATION
+
+########## USER MODEL CONFIGURATION
+# Swapping default Auth model
+AUTH_USER_MODEL = 'account.CustomUser'
+########## END USER MODEL CONFIGURATION

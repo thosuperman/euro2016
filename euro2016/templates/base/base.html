@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        <title>{% block pagetitle %} Welcome to Euro2016 fansite {% endblock %}</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <link href='https://fonts.googleapis.com/css?family=Roboto|Lato' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        {% include 'material/includes/material_css.html' %}
+
+        {% block extrahead %}{% endblock %}
+    </head>
+    <body>
+        <main class="container">
+            {% block content %}{% endblock %}
+        </main>
+
+        <script src="{% static 'base/js/jquery-2.1.4.min.js' %}"></script>
+        <script src="{% static 'material/js/jquery.datetimepicker.js' %}"></script>
+        <script src="{% static 'material/js/jquery.formset.js' %}"></script>
+        <script src="{% static 'material/js/materialize.js' %}"></script>
+        <script src="{% static 'material/js/material_init.js' %}"></script>
+
+        {% block morescripts %}{% endblock %}
+    </body>
+</html>
