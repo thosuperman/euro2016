@@ -154,6 +154,7 @@ DJANGO_APPS = (
 LOCAL_APPS = (
     'account',
     'material',
+    'posts'
 )
 
 ########## LOGGING CONFIGURATION

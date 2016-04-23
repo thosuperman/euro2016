@@ -5,6 +5,9 @@
  html {
      background-color: #ddd;
  }
+.primary-color {
+    background-color: #3B89B6;
+}
 
  /*
   * Navbar
@@ -38,6 +41,7 @@ nav {
 .side-nav li, .side-nav li a {
     height: 46px;
     line-height: 3.2;
+    padding: 0;
 }
 .dashboard-side-nav {
     top: 64px;
@@ -61,6 +65,8 @@ li.dashboard-header {
 }
 .side-nav.fixed a {
     color: #757575;
+    width: 100%;
+    padding: 0 30px;
 }
 @media only screen and (max-width: 992px) {
 .side-nav.fixed {

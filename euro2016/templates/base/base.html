@@ -13,6 +13,7 @@
     <body>
         {% include "base/navbar.html" %}
         {% block outercontent %}{% endblock %}
+        {% include "base/display_messages.html" %}
         {% block content %}{% endblock %}
         <script src="{% static 'base/js/jquery-2.1.4.min.js' %}"></script>
         <script src="{% static 'material/js/jquery.datetimepicker.js' %}"></script>
