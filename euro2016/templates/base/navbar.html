@@ -10,7 +10,7 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             {% if request.user.is_authenticated %}
             <li><a href="">{{ request.user.username }}</a></li>
-            <li><a href="">DASHBOARD</a></li>
+            <li><a href="{% url 'dashboard' %}">DASHBOARD</a></li>
             <li><a href="{% url 'logout' %}">LOGOUT</a></li>
             {% else %}
             <li><a href="{% url 'login' %}">LOGIN</a></li>

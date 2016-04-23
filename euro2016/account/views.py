@@ -31,7 +31,7 @@ def login(request):
         if f.is_valid():
             user = f.get_user()
             auth_login(request, user)
-            return redirect('home')
+            return redirect('dashboard')
     return render(request, 'authentication/login.html', { 'form': f })
 
 @require_GET
@@ -41,8 +41,8 @@ def logout(request):
 
 @require_GET
 @login_required
-def home(request):
-    return render(request, 'base/loggedin.html')
+def dashboard(request):
+    return render(request, 'base/dashboard.html')
 
 
 @require_http_methods(['GET', 'POST'])

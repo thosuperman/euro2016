@@ -30,3 +30,39 @@ nav {
     /*background-color: #3B89B6;*/
     background-color: #fff;
 }
+
+
+.mdi-navigation-menu {
+    display: none;
+}
+.side-nav li, .side-nav li a {
+    height: 46px;
+    line-height: 3.2;
+}
+.dashboard-side-nav {
+    top: 64px;
+}
+li.dashboard-header {
+    padding: 0 !important;
+    height: 180px !important;
+}
+.dashboard-header:hover {
+    background-color: #fff !important;
+}
+.dashboard-header img {
+    width: 100%;
+    height: 180px;
+}
+.custom-dashboard-container {
+    padding: 0 0 0 23px;
+    margin-right: 0;
+    margin-left: 230px;
+    width: 75%;
+}
+.side-nav.fixed a {
+    color: #757575;
+}
+@media only screen and (max-width: 992px) {
+.side-nav.fixed {
+    left: 0 !important;
+}
