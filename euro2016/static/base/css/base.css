@@ -8,7 +8,9 @@
 .primary-color {
     background-color: #3B89B6;
 }
-
+* {
+    color: black;
+}
  /*
   * Navbar
   **/
@@ -34,7 +36,9 @@ nav {
     background-color: #fff;
 }
 
-
+/*
+ * Dashboard
+ **/
 .mdi-navigation-menu {
     display: none;
 }
@@ -68,6 +72,17 @@ li.dashboard-header {
     width: 100%;
     padding: 0 30px;
 }
+/*
+ * Posts list
+ **/
+.card .card-image img {
+    min-height: 400px;
+    max-height: 500px;
+}
+
+/*
+ * Media Query dashbaord
+ **/
 @media only screen and (max-width: 992px) {
 .side-nav.fixed {
     left: 0 !important;
