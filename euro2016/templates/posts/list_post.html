@@ -21,7 +21,7 @@
                             <a href="">{{ post.title }}</a>
                             <h6>{{ post.timestamp|timesince }}</h6>
                         </span>
-                        <p>{{ post.content | linebreaks | truncatechars:120 }}</p>
+                        <p>{{ post.content|linebreaks|truncatechars:120 }}</p>
                     </div>
                     <div class="card-action">
                         <a href="{{ post.get_absolute_url }}">View</a>

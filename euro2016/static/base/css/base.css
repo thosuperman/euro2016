@@ -77,7 +77,7 @@ li.dashboard-header {
  **/
 .card .card-image img {
     min-height: 400px;
-    max-height: 500px;
+    max-height: 400px;
 }
 
 /*

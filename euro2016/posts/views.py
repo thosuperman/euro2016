@@ -1,7 +1,7 @@
 from django.contrib import messages
 from urllib.parse import quote
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Post
 from .forms import PostForm
@@ -45,9 +45,11 @@ def detail_post(request, slug = None):
     return render(request, 'posts/detail_post.html', context)
 
 def create_post(request):
+    if not request.user.is_staff or not request.user.is_superuser:
+        raise Http404
     f = PostForm()
     if request.method == "POST":
-        f = PostForm(request.POST, request.FILES)
+        f = PostForm(request.POST, request.FILES or None)
         if f.is_valid():
             instance = f.save(commit = False)
             instance.save()
@@ -61,22 +63,26 @@ def create_post(request):
     return render(request, 'posts/create_post.html', context)
 
 def update_post(request, slug = None):
-        instance = get_object_or_404(Post, slug = slug)
-        f = PostForm(request.POST or None, request.FILES, instance = instance)
-        if f.is_valid():
-            instance = f.save(commit = False)
-            instance.save()
-            messages.success(request, "Succesfully updated post", extra_tags="some-class")
-            return HttpResponseRedirect(instance.get_absolute_url())
+    if not request.user.is_staff or not request.user.is_superuser:
+        raise Http404
+    instance = get_object_or_404(Post, slug = slug)
+    f = PostForm(request.POST or None, request.FILES or None, instance = instance)
+    if f.is_valid():
+        instance = f.save(commit = False)
+        instance.save()
+        messages.success(request, "Succesfully updated post", extra_tags="some-class")
+        return HttpResponseRedirect(instance.get_absolute_url())
 
-        context = {
-            "form": f,
-            "title": "Edit post",
-            "instance": instance,
-        }
-        return render(request, 'posts/edit_post.html', context)
+    context = {
+        "form": f,
+        "title": "Edit post",
+        "instance": instance,
+    }
+    return render(request, 'posts/edit_post.html', context)
 
 def delete_post(request, slug = None):
+    if not request.user.is_staff or not request.user.is_superuser:
+        raise Http404
     instance = get_object_or_404(Post, slug = slug)
     instance.delete()
     messages.success(request, "Succesfully deleted post")
