@@ -1,15 +1,21 @@
 from django.contrib import messages
-from urllib.parse import quote
-from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.utils import timezone
+from urllib.parse import quote
+
 from .models import Post
 from .forms import PostForm
+
 # Create your views here.
 
 # List all the posts
 def list_post(request):
-    queryset_list =  Post.objects.all()
+    today = timezone.now().date()
+    queryset_list =  Post.objects.active_posts()
+    if request.user.is_staff or request.user.is_superuser:
+        queryset_list = Post.objects.all()
     paginator = Paginator(queryset_list, 5) # Show 25 contacts per page
 
     # Varaiable for reauesting pages
@@ -30,11 +36,15 @@ def list_post(request):
         #'posts_list': Post.objects.all().order_by("-timestamp"),
         'posts_list':queryset,
         'page_request_variable': page_request_variable,
+        'today': today,
     }
     return render(request, 'posts/list_post.html', context)
 
 def detail_post(request, slug = None):
     instance = get_object_or_404(Post, slug = slug)
+    if instance.draft or instance.publish > timezone.now().date():
+        if not request.user.is_staff or not request.user.is_superuser:
+            raise Http404
     # create url encoded strings
     # "I am superman" => "I%20am%20superman"
     share_string = quote(instance.content)

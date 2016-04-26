@@ -19,7 +19,13 @@
                     <div class="card-content">
                         <span class="card-title">
                             <a href="">{{ post.title }}</a>
-                            <h6>{{ post.timestamp|timesince }}</h6>
+                            {% if post.draft %}
+                            <span style="color:red">Draft Mode</span>
+                                {% if post.publish > today %}
+                                    <small>Future Post</small>
+                                {% endif %}
+                            {% endif %}
+                            <small>{{ post.publish }}</small>
                         </span>
                         <p>{{ post.content|linebreaks|truncatechars:120 }}</p>
                     </div>

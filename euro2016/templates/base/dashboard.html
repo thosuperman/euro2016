@@ -9,6 +9,9 @@
         <li><a class="waves-effect waves-light">My Team</a></li>
         <li><a href="#!" class="waves-effect waves-light">My Predictions</a></li>
         <li><a href="#!" class="waves-effect waves-light">Settings</a></li>
+        {% if request.user.is_superuser %}
+        <li><a href="{% url 'posts:create_post' %}" class="waves-effect waves-light">Create Post</a></li>
+        {% endif %}
     </ul>
 </aside>
 {% endblock %}
