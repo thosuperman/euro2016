@@ -11,6 +11,9 @@
 * {
     color: black;
 }
+.z-depth-0 {
+    box-shadow: none;
+}
  /*
   * Navbar
   **/
@@ -72,14 +75,6 @@ li.dashboard-header {
     width: 100%;
     padding: 0 30px;
 }
-/*
- * Posts list
- **/
-.card .card-image img {
-    min-height: 400px;
-    max-height: 400px;
-}
-
 /*
  * Media Query dashbaord
  **/
